@@ -3,4 +3,4 @@
 - CapsLock backlight
 - Macros
 
-For correct work of CapsLock backlight it must be on the master side.
+For the CapsLock backlight to work correctly, it must be on the master side.
