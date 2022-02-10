@@ -1,4 +1,4 @@
-##### Iris rev 6 keymap 
+### Iris rev 6 keymap 
 - Layers backlight and/or underglow
 - CapsLock backlight
 - Macros
