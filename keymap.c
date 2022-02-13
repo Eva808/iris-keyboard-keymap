@@ -20,7 +20,7 @@ enum custom_keycodes {
   FN,
   REOPEN,  //reopen last closed page
   MAKE,    //qmk build
-  LANG,    //change the language by this button only, NOT by holding SHIFT+ALT (they must be set as default)!!! Changes base layout
+  LANG,    //change the language by this button only, NOT by holding key combinations!!! Changes base layout
   PASS,
 };
 
@@ -53,11 +53,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, KC_EXLM,   KC_AT, KC_HASH, KC_DLR, KC_PERC,                             KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_PLUS, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_NO,   KC_QUOT, KC_LCBR, KC_RCBR, KC_BSLS,                             KC_NO,  KC_HOME,  KC_UP,  KC_PGUP, KC_SCLN, _______,
+     _______, KC_NO,   KC_QUOT, KC_LPRN, KC_RPRN, KC_BSLS,                             KC_NO,  KC_HOME,  KC_UP,  KC_PGUP, KC_SCLN, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_NO,   KC_DQUO, KC_LBRC, KC_RBRC, KC_SLSH,                             KC_NO,  KC_LEFT, KC_DOWN, KC_RIGHT,KC_COLN,  KC_EQL,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, TO(0),   KC_QUES, KC_LPRN, KC_RPRN, KC_PIPE, _______,          _______,KC_PSCR,  KC_END,  KC_NO,  KC_PGDN, KC_UNDS,  _______,
+     _______, TO(0),   KC_QUES, KC_LCBR, KC_RCBR, KC_PIPE, _______,          _______,KC_PSCR,  KC_END,  KC_NO,  KC_PGDN, KC_UNDS,  _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______,  _______, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -85,15 +85,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
-    [_SYMBOL_RU] = LAYOUT(
+    [_SYMBOL_RU] = LAYOUT(  //в русской раскладке нет многих символов вроде квадратных скобок, поэтому вместо них пусто
+                            //в цифровом ряду дублируются символы с обычной йцукен для фанатов извращений
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, RU_EXLM,   KC_NO, RU_NUM,   KC_DLR, RU_PERC,                             KC_CIRC, KC_AMPR, RU_ASTR, RU_MINS, RU_PLUS, _______,
+     _______, RU_EXLM, RU_DQUO, RU_NUM,  RU_SCLN, RU_PERC,                            RU_COLN, RU_QUES, RU_ASTR, RU_MINS, RU_PLUS, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_NO,   KC_QUOT, KC_LCBR, KC_RCBR, KC_BSLS,                             KC_NO,  KC_HOME,  KC_UP,  KC_PGUP, RU_SCLN, _______,
+     _______, RU_RUBL, KC_NO,   RU_LPRN, RU_RPRN, KC_BSLS,                             KC_NO,  KC_HOME,  KC_UP,  KC_PGUP, RU_SCLN, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_NO,   RU_DQUO, KC_LBRC, KC_RBRC, RU_SLSH,                             KC_NO,  KC_LEFT, KC_DOWN, KC_RIGHT,RU_COLN,  RU_EQL,
+     _______, KC_NO,   RU_DQUO, KC_NO,   KC_NO,   RU_SLSH,                             KC_NO,  KC_LEFT, KC_DOWN, KC_RIGHT,RU_COLN,  RU_EQL,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, TO(0),   RU_QUES, RU_LPRN, RU_RPRN, KC_PIPE, _______,          _______,KC_PSCR,  KC_END,  RU_COMM,  KC_PGDN, RU_UNDS,  _______,
+     _______, TO(0),   RU_QUES, KC_NO,   KC_NO,   KC_NO,   _______,          _______,KC_PSCR,  KC_END,  RU_COMM, KC_PGDN, RU_UNDS, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______,  _______, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -147,7 +148,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {  //macros
                     SEND_STRING("qmk compile -kb keebio/iris/rev6 -km Eva808\n");
                     SEND_STRING(SS_LALT(SS_LSFT()));
                 }
-                
             }
             break;
         case LANG:
