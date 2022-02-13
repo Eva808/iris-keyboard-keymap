@@ -20,7 +20,7 @@ enum custom_keycodes {
   FN,
   REOPEN,  //reopen last closed page
   MAKE,    //qmk build
-  LANG,    //change the language by this button only, NOT by holding key combinations!!! Changes base layout
+  LANG,    //change the language by this button only, NOT by holding SHIFT+ALT (they must be set as default)!!! Changes base layout
   PASS,
 };
 
