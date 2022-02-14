@@ -49,6 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                             KC_SPC), KC_RALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
+
 [_SYMBOL] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, KC_EXLM,   KC_AT, KC_HASH, KC_DLR, KC_PERC,                             KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_PLUS, _______,
@@ -62,6 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     _______, _______, _______,                   _______,  _______, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
+
   [_RU] = LAYOUT(  //Ёё и Ъъ в _FN слое на месте Eе и Ьь, точка на правом CTRL
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_GESC,  KC_NO,   REOPEN,   PASS,    KC_NO,   LANG,                               MAKE,    KC_NO,  KC_NO,    KC_NO,  KC_NO,   KC_BSPC,
@@ -220,6 +222,12 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {   /
                 rgb_matrix_set_color(33, 219,76,76);
                 break;
             default:
+                rgb_matrix_set_color(28, 204,107,4);
+                rgb_matrix_set_color(29, 204,107,4);
+                rgb_matrix_set_color(30, 204,107,4);
+                rgb_matrix_set_color(31, 204,107,4);
+                rgb_matrix_set_color(32, 204,107,4);
+                rgb_matrix_set_color(33, 204,107,4);
                 break;
         }
     }
