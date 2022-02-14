@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "quantum\keymap_extras\keymap_russian.h"
+#include "\quantum\keymap_extras\keymap_russian.h"
 bool russian = false;
 
 
@@ -24,6 +24,14 @@ enum custom_keycodes {
   PASS,
 };
 
+uint8_t colourDefault[] = {204, 107, 4};
+uint8_t colourSymbol[] = {219, 76, 76};
+uint8_t colourNum[] = {54, 204, 31};
+
+int underglowLED[6] = {28, 29, 30, 31, 32, 33};
+int backlightLEDinner[15] = {6, 7, 8, 9, 10, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
+int backlightLEDall[27] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27};
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -34,7 +42,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      MEH_T(
         KC_TAB), KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     OSL(_FN), KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, KC_EQL,
+     OSL(_FN), LGUI_T(
+                KC_A), LALT_T(
+                        KC_S),  LCTL_T(
+                                KC_D),    KC_F,    KC_G,                               KC_H,    KC_J,   RCTL_T(
+                                                                                                        KC_K),  RALT_T(
+                                                                                                                 KC_L),   RGUI_T(
+                                                                                                                          KC_SCLN), KC_EQL,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      LCTL_T(
         KC_GRV),KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    TG(_NUM),            TG(
@@ -54,11 +68,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, KC_EXLM,   KC_AT, KC_HASH, KC_DLR, KC_PERC,                             KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_PLUS, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_NO,   KC_QUOT, KC_LPRN, KC_RPRN, KC_BSLS,                             KC_NO,  KC_HOME,  KC_UP,  KC_PGUP, KC_SCLN, _______,
+     _______, KC_NO,   KC_QUOT, KC_LPRN, KC_RPRN, KC_BSLS,                             KC_NO,  KC_HOME,  KC_UP,  KC_END,  KC_SCLN, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_NO,   KC_DQUO, KC_LBRC, KC_RBRC, KC_SLSH,                             KC_NO,  KC_LEFT, KC_DOWN, KC_RIGHT,KC_COLN,  KC_EQL,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, TO(0),   KC_QUES, KC_LCBR, KC_RCBR, KC_PIPE, _______,          _______,KC_PSCR,  KC_END,  KC_NO,  KC_PGDN, KC_UNDS,  _______,
+     _______, TO(0),   KC_QUES, KC_LCBR, KC_RCBR, KC_PIPE, _______,          _______,KC_PSCR,  KC_NO,    KC_NO,  KC_NO,  KC_UNDS,  _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______,  _______, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -71,7 +85,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      MEH_T(
         KC_TAB),RU_SHTI,RU_TSE,    RU_U,  RU_KA,   RU_IE,                              RU_EN,  RU_GHE,  RU_SHA,  RU_SHCH,   RU_ZE,  RU_HA,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     OSL(_FN), RU_EF,  RU_YERU,   RU_VE,   RU_A,  RU_PE,                               RU_ER,    RU_O,   RU_EL,   RU_DE,   RU_ZHE,  RU_E,
+     OSL(_FN), LGUI_T(
+                RU_EF), LALT_T(
+                        RU_YERU),LCTL_T(
+                                  RU_VE),  RU_A,  RU_PE,                               RU_ER,    RU_O,   RCTL_T(
+                                                                                                         RU_EL), RALT_T(
+                                                                                                                  RU_DE), RGUI_T(
+                                                                                                                           RU_ZHE),  RU_E,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LCTL,  RU_YA, RU_CHE,   RU_ES,  RU_EM,    RU_I,    TG(_NUM),         TG(
                                                                             _SYMBOL_RU), RU_TE, RU_SOFT, RU_BE,  RU_YU,  RU_COMM,  RCTL_T(
@@ -92,11 +112,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, RU_EXLM, RU_DQUO, RU_NUM,  RU_SCLN, RU_PERC,                            RU_COLN, RU_QUES, RU_ASTR, RU_MINS, RU_PLUS, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, RU_RUBL, KC_NO,   RU_LPRN, RU_RPRN, KC_BSLS,                             KC_NO,  KC_HOME,  KC_UP,  KC_PGUP, RU_SCLN, _______,
+     _______, RU_RUBL, KC_NO,   RU_LPRN, RU_RPRN, KC_BSLS,                             KC_NO,  KC_HOME,  KC_UP,  KC_END,  RU_SCLN, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_NO,   RU_DQUO, KC_NO,   KC_NO,   RU_SLSH,                             KC_NO,  KC_LEFT, KC_DOWN, KC_RIGHT,RU_COLN,  RU_EQL,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, TO(0),   RU_QUES, KC_NO,   KC_NO,   KC_NO,   _______,          _______,KC_PSCR,  KC_END,  RU_COMM, KC_PGDN, RU_UNDS, _______,
+     _______, TO(0),   RU_QUES, KC_NO,   KC_NO,   KC_NO,   _______,          _______,KC_PSCR,  KC_NO,   RU_COMM, KC_NO,   RU_UNDS, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______,  _______, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -153,7 +173,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {  //macros
             }
             break;
         case LANG:
-            if (record->event.pressed) { 
+            if (record->event.pressed) {
                 if (!russian) {
                     russian = true;
                     set_single_persistent_default_layer(_RU);
@@ -174,7 +194,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {  //macros
     return true;
 };
 
-      
+
 void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {   //RGB
     if (host_keyboard_led_state().caps_lock) {                                 //caps lock backlight
         rgb_matrix_set_color(26, RGB_CYAN);
@@ -182,52 +202,28 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {   /
 
     for (uint8_t i = led_min; i <= led_max; i++) {
         switch(get_highest_layer(layer_state|default_layer_state)) {           //layers backlight
-            case _NUM:                                                         //0-27 keys, 28-33 underglow 
-              /*rgb_matrix_set_color(6, 54,204,31); 
-                rgb_matrix_set_color(7, 54,204,31);
-                rgb_matrix_set_color(8, 54,204,31);
-                rgb_matrix_set_color(9, 54,204,31);
-                rgb_matrix_set_color(10, 54,204,31);
-                rgb_matrix_set_color(13, 54,204,31);
-                rgb_matrix_set_color(14, 54,204,31);
-                rgb_matrix_set_color(15, 54,204,31);
-                rgb_matrix_set_color(16, 54,204,31);
-                rgb_matrix_set_color(17, 54,204,31);
-                rgb_matrix_set_color(18, 54,204,31);
-                rgb_matrix_set_color(19, 54,204,31);
-                rgb_matrix_set_color(20, 54,204,31);
-                rgb_matrix_set_color(21, 54,204,31);
-                rgb_matrix_set_color(22, 54,204,31);*/
-                rgb_matrix_set_color(28, 54,204,31);
-                rgb_matrix_set_color(29, 54,204,31);
-                rgb_matrix_set_color(30, 54,204,31);
-                rgb_matrix_set_color(31, 54,204,31);
-                rgb_matrix_set_color(32, 54,204,31);
-                rgb_matrix_set_color(33, 54,204,31);
+            case _NUM:
+                /*for (int j = 0; j < 15; ++j) {
+                    rgb_matrix_set_color(backlightLEDall[j], colourNum[0], colourNum[1], colourNum[2]);
+                }*/
+                for (int j = 0; j < 6; ++j) {
+                    rgb_matrix_set_color(underglowLED[j], colourNum[0], colourNum[1], colourNum[2]);
+                }
                 break;
-            case _SYMBOL: 
-                rgb_matrix_set_color(28, 219,76,76);
-                rgb_matrix_set_color(29, 219,76,76);
-                rgb_matrix_set_color(30, 219,76,76);
-                rgb_matrix_set_color(31, 219,76,76);
-                rgb_matrix_set_color(32, 219,76,76);
-                rgb_matrix_set_color(33, 219,76,76);
+            case _SYMBOL:
+                for (int j = 0; j < 6; ++j) {
+                    rgb_matrix_set_color(underglowLED[j], colourSymbol[0], colourSymbol[1], colourSymbol[2]);
+                }
                 break;
             case _SYMBOL_RU: 
-                rgb_matrix_set_color(28, 219,76,76);
-                rgb_matrix_set_color(29, 219,76,76);
-                rgb_matrix_set_color(30, 219,76,76);
-                rgb_matrix_set_color(31, 219,76,76);
-                rgb_matrix_set_color(32, 219,76,76);
-                rgb_matrix_set_color(33, 219,76,76);
+                for (int j = 0; j < 6; ++j) {
+                    rgb_matrix_set_color(underglowLED[j], colourSymbol[0], colourSymbol[1], colourSymbol[2]);
+                }
                 break;
             default:
-                rgb_matrix_set_color(28, 204,107,4);
-                rgb_matrix_set_color(29, 204,107,4);
-                rgb_matrix_set_color(30, 204,107,4);
-                rgb_matrix_set_color(31, 204,107,4);
-                rgb_matrix_set_color(32, 204,107,4);
-                rgb_matrix_set_color(33, 204,107,4);
+                for (int j = 0; j < 6; ++j) {
+                    rgb_matrix_set_color(underglowLED[j], colourDefault[0], colourDefault[1], colourDefault[2]);
+                }
                 break;
         }
     }
