@@ -18,15 +18,15 @@ enum custom_keycodes {
   SYMBOL_RU,
   NUM,
   FN,
-  REOPEN,  //reopen last closed page
-  MAKE,    //qmk build
-  LANG,    //change the language by this button only, NOT by holding key combinations!!! Changes base layout
+  REOPEN,  
+  MAKE,    
+  LANG,    //switch the language by LANG button only, NOT by holding key combinations!!! Changes base layout
   PASS,
 };
 
-uint8_t colourDefault[] = {204, 107, 4};
-uint8_t colourSymbol[] = {219, 76, 76};
-uint8_t colourNum[] = {54, 204, 31};
+uint8_t colourDefault[] = {204, 107, 4};  //default underglow colour
+uint8_t colourSymbol[] = {219, 76, 76};   //symbol layer underglow colour
+uint8_t colourNum[] = {54, 204, 31};      //numpad layer underglow colour
 
 int underglowLED[6] = {28, 29, 30, 31, 32, 33};
 int backlightLEDinner[15] = {6, 7, 8, 9, 10, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
@@ -154,14 +154,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {  //macros
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {  //macros examples
     switch (keycode) {
-        case REOPEN:
+        case REOPEN:  //reopen last closed page
             if (record->event.pressed) {
                 SEND_STRING(SS_LCTL(SS_LSFT("t")));
             } 
             break;
-        case MAKE:
+        case MAKE:  //qmk build
             if (record->event.pressed) { 
                 if (!russian) {
                     SEND_STRING("qmk compile -kb keebio/iris/rev6 -km Eva808\n");
@@ -172,7 +172,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {  //macros
                 }
             }
             break;
-        case LANG:
+        case LANG:  //switch language
             if (record->event.pressed) {
                 if (!russian) {
                     russian = true;
