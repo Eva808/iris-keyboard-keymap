@@ -1,4 +1,4 @@
-## Iris rev 6 keymap, Corne-style with macros
+## A custom layout for the Iris keyboard, Corne-style with macros
 - Layers backlight and/or underglow
 - CapsLock button backlight
 - Macros
@@ -17,3 +17,4 @@ Both halves must be flashed separately otherwise the LED related features will n
 ### *CapsLock button backlight:*
 
 ![Imgur](https://i.imgur.com/2G5OgjS.jpg)
+ 
