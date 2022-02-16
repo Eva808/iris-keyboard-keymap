@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "\quantum\keymap_extras\keymap_russian.h"
+#include "qmk_firmware\quantum\keymap_extras\keymap_russian.h"
 bool russian = false;
 
 
@@ -24,9 +24,9 @@ enum custom_keycodes {
   PASS,
 };
 
-uint8_t colourDefault[] = {204, 107, 4};  //default underglow colour
-uint8_t colourSymbol[] = {219, 76, 76};   //symbol layer underglow colour
-uint8_t colourNum[] = {54, 204, 31};      //numpad layer underglow colour
+uint8_t colourDefault[] = {204, 107, 4};   //default underglow colour
+uint8_t colourSymbol[] = {219, 76, 76};    //symbol layer underglow colour
+uint8_t colourNum[] = {54, 204, 31};       //numpad layer underglow colour
 
 int underglowLED[6] = {28, 29, 30, 31, 32, 33};
 int backlightLEDinner[15] = {6, 7, 8, 9, 10, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
@@ -45,7 +45,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      OSL(_FN), LGUI_T(
                 KC_A), LALT_T(
                         KC_S),  LCTL_T(
-                                KC_D),    KC_F,    KC_G,                               KC_H,    KC_J,   RCTL_T(
+                                KC_D),  LSFT_T(KC_F),    KC_G,                        KC_H,    RSFT_T(
+                                                                                                KC_J), RCTL_T(
                                                                                                         KC_K),  RALT_T(
                                                                                                                  KC_L),   RGUI_T(
                                                                                                                           KC_SCLN), KC_EQL,
@@ -70,7 +71,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_NO,   KC_QUOT, KC_LPRN, KC_RPRN, KC_BSLS,                             KC_NO,  KC_HOME,  KC_UP,  KC_END,  KC_SCLN, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_NO,   KC_DQUO, KC_LBRC, KC_RBRC, KC_SLSH,                             KC_NO,  KC_LEFT, KC_DOWN, KC_RIGHT,KC_COLN,  KC_EQL,
+     _______, KC_NO,   
+                       KC_DQUO, LCTL_T(
+                                KC_LBRC), LSFT_T(
+                                         KC_RBRC), KC_SLSH,                             KC_NO,  KC_LEFT, KC_DOWN, KC_RIGHT,KC_COLN,  KC_EQL,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______, TO(0),   KC_QUES, KC_LCBR, KC_RCBR, KC_PIPE, _______,          _______,KC_PSCR,  KC_NO,    KC_NO,  KC_NO,  KC_UNDS,  _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -88,7 +92,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      OSL(_FN), LGUI_T(
                 RU_EF), LALT_T(
                         RU_YERU),LCTL_T(
-                                  RU_VE),  RU_A,  RU_PE,                               RU_ER,    RU_O,   RCTL_T(
+                                  RU_VE),LSFT_T(
+                                         RU_A),  RU_PE,                               RU_ER,   RSFT_T(
+                                                                                                RU_O),  RCTL_T(
                                                                                                          RU_EL), RALT_T(
                                                                                                                   RU_DE), RGUI_T(
                                                                                                                            RU_ZHE),  RU_E,
@@ -114,7 +120,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, RU_RUBL, KC_NO,   RU_LPRN, RU_RPRN, KC_BSLS,                             KC_NO,  KC_HOME,  KC_UP,  KC_END,  RU_SCLN, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_NO,   RU_DQUO, KC_NO,   KC_NO,   RU_SLSH,                             KC_NO,  KC_LEFT, KC_DOWN, KC_RIGHT,RU_COLN,  RU_EQL,
+     _______, KC_NO,   
+                       RU_DQUO, KC_LCTL, KC_LSFT, RU_SLSH,                             KC_NO,  KC_LEFT, KC_DOWN, KC_RIGHT,RU_COLN,  RU_EQL,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______, TO(0),   RU_QUES, KC_NO,   KC_NO,   KC_NO,   _______,          _______,KC_PSCR,  KC_NO,   RU_COMM, KC_NO,   RU_UNDS, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -126,9 +133,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______,  KC_NO  , KC_NO,   KC_NO,    KC_NO,  KC_NO,                              KC_NO,  KC_P7,    KC_P8,    KC_P9, KC_PSLS,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______,  KC_NO,   KC_LPRN,  KC_UP,  KC_RPRN,  KC_NO,                            KC_NO,   KC_P4,    KC_P5,    KC_P6,  KC_PAST, _______,
+     _______,  KC_NO,   KC_HOME,  KC_UP,  KC_END,  KC_NO,                              KC_NO,   KC_P4,    KC_P5,    KC_P6,  KC_PAST, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_NO,   KC_LEFT, KC_DOWN, KC_RIGHT, KC_NO,                              KC_NO,   KC_P1,   KC_P2,   KC_P3,  KC_PMNS, KC_EQL,
+     _______, KC_NO,   KC_LEFT, KC_DOWN, KC_RIGHT, KC_NO,                              KC_NO,   RSFT_T(
+                                                                                                KC_P1), RCTL_T(
+                                                                                                        KC_P2),  RALT_T(
+                                                                                                                 KC_P3),   KC_PMNS, KC_EQL,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______, TO(0),   KC_LBRC, KC_NO,    KC_RBRC, KC_NO,  _______,          _______, KC_PSCR,  KC_NO,   KC_P0,   KC_PDOT, KC_PPLS, KC_COMM,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
