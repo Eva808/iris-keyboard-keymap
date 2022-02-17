@@ -1,4 +1,4 @@
-## A custom layout for the Iris keyboard, Corne-style with macros
+## A custom layout for the Iris keyboard, layers indicator, Corne-style with macros 
 - Layers backlight and/or underglow
 - CapsLock button backlight
 - Macros
