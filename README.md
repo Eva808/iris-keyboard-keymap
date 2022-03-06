@@ -3,7 +3,7 @@
 - CapsLock button backlight
 - Macros
 - Russian layout + symbols
-- Additional Miryoku style modifiers 
+- Additional home row modifiers (Miryoku style)
 
 For the CapsLock backlight to work correctly, it must be on the master side.
 Both halves must be flashed separately otherwise the LED related features will not work properly due to the QMK limitation.
