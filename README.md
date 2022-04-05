@@ -1,4 +1,4 @@
-## A custom layout for the Iris keyboard, layers indicator, Corne-style with macros 
+## Layers indicator, tap dancing, macros and many more.
 - Layers backlight and/or underglow
 - CapsLock button backlight
 - Tap dancing
