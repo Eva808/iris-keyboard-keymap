@@ -5,6 +5,7 @@
 - Macros
 - Russian layout + symbols
 - Additional home row modifiers (Miryoku style)
+- Colemak DH
 
 For the CapsLock backlight to work correctly, it must be on the master side.
 Both halves must be flashed separately otherwise the LED related features will not work properly due to the QMK limitation.
