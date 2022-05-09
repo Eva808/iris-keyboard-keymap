@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "C:\Users\ad00\qmk_firmware\quantum\keymap_extras\keymap_russian.h"
+#include "quantum\keymap_extras\keymap_russian.h"
 bool russian = false;
 
 
