@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "qmk_firmware\quantum\keymap_extras\keymap_russian.h"
+#include "C:\Users\ad00\qmk_firmware\quantum\keymap_extras\keymap_russian.h"
 bool russian = false;
 
 
@@ -29,6 +29,7 @@ enum custom_keycodes {
 };
 
 uint8_t colourDefault[] = {204, 107, 4};   //default underglow colour
+//uint8_t colourDefault[] = {176,95,33};
 uint8_t colourSymbol[] = {219, 76, 76};    //symbol layer underglow colour
 uint8_t colourNum[] = {54, 204, 31};       //numpad layer underglow colour
 
@@ -41,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_GESC,  KC_NO,   CLIPBOARD,PASS,    KC_NO,   KC_NO,                               MAKE,  LANG, TO_COLEMAK,TO_QWERTY,  KC_NO,   KC_BSPC,
+     KC_GESC,  KC_NO,   CLIPBOARD,PASS,    KC_NO,   KC_F5,                               MAKE,  LANG, TO_COLEMAK,TO_QWERTY,  KC_NO,   KC_BSPC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      MEH_T(
         KC_TAB), KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL,
@@ -57,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      LCTL_T(
         KC_GRV),KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    TG(_NUM),            TG(
-                                                                             _SYMBOL),KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_MINS, KC_RCTL,
+                                                                             _SYMBOL),KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_MINS, RCTL_T(KC_GRV),
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     LALT_T(
                                         KC_ENT), LT(
@@ -71,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_COLEMAK] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_GESC,  KC_NO,   CLIPBOARD,PASS,    KC_NO,   KC_NO,                               MAKE,  LANG,TO_COLEMAK,TO_QWERTY,  KC_NO,   KC_BSPC,
+     KC_GESC,  KC_NO,   CLIPBOARD,PASS,    KC_NO,   KC_F5,                               MAKE,  LANG,TO_COLEMAK,TO_QWERTY,  KC_NO,   KC_BSPC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      MEH_T(
         KC_TAB), KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                               KC_J,    KC_L,    KC_U,    KC_Y,  KC_SCLN,  KC_DEL,
@@ -87,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      LCTL_T(
         KC_GRV),KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    TG(_NUM),            TG(
-                                                                             _SYMBOL),KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_MINS, KC_RCTL,
+                                                                             _SYMBOL),KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_MINS, RCTL_T(KC_GRV),
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     LALT_T(
                                         KC_CAPS), LT(
@@ -100,18 +101,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_SYMBOL] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, KC_NO,   KC_NO,   KC_NO,   KC_DLR,  KC_NO,                             KC_CIRC,    KC_NO,  KC_NO,    KC_NO,    KC_NO, _______,
+     _______, KC_NO,   CLIPBOARD,PASS,   KC_DLR,  KC_F5,                             KC_CIRC,   LANG,  KC_NO,   KC_NO,    KC_NO, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_EXLM, KC_DQUO, KC_LPRN, KC_RPRN, KC_BSLS,                            KC_PERC,  KC_HOME,  KC_UP,  KC_END,  KC_SCLN, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, //LGUI_T(
+     _______, 
                 KC_AT,   
                        LALT_T(
                        KC_QUOT), LSFT_T(
                                 KC_LBRC), LCTL_T(
                                          KC_RBRC), KC_SLSH,                           KC_AMPR,  KC_LEFT, KC_DOWN, KC_RIGHT,KC_COLN,  KC_EQL,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     TO(0),   KC_HASH, KC_QUES, KC_LCBR, KC_RCBR, KC_PIPE, _______,          _______,KC_ASTR,  KC_PLUS, KC_PDOT, KC_MINS,  KC_UNDS,  KC_RCTL,
+     TO(0),   KC_HASH, 
+                       KC_QUES, KC_LCBR, KC_RCBR, KC_PIPE, _______,          _______,KC_ASTR,  KC_PLUS, KC_PDOT, KC_MINS,  KC_UNDS,  KC_RCTL,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______,  _______, KC_PSCR
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -119,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_RU] = LAYOUT(  //Ёё и Ъъ в _FN слое на месте Eе и Ьь, точка на правом CTRL
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_GESC,  KC_NO,   CLIPBOARD,PASS,    KC_NO,   KC_NO,                               MAKE,    LANG,  KC_NO,    KC_NO,  KC_NO,   KC_BSPC,
+     KC_GESC,  KC_NO,   CLIPBOARD,PASS,    KC_NO,   KC_F5,                               MAKE,    LANG,TO_COLEMAK,TO_QWERTY,KC_NO, KC_BSPC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      MEH_T(
         KC_TAB),RU_SHTI,RU_TSE,    RU_U,  RU_KA,   RU_IE,                              RU_EN,  RU_GHE,  RU_SHA,  RU_SHCH,   RU_ZE,  RU_HA,
@@ -134,7 +136,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                                                   RU_DE), RGUI_T(
                                                                                                                            RU_ZHE),  RU_E,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LCTL,  RU_YA, RU_CHE,   RU_ES,  RU_EM,    RU_I,    TG(_NUM),         TG(
+     LCTL_T(
+    KC_GRV),  RU_YA, RU_CHE,   RU_ES,  RU_EM,    RU_I,    TG(_NUM),         TG(
                                                                             _SYMBOL_RU), RU_TE, RU_SOFT, RU_BE,  RU_YU,  RU_COMM,  RCTL_T(
                                                                                                                                     RU_DOT),
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -149,9 +152,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
     [_SYMBOL_RU] = LAYOUT(  //в русской раскладке нет многих символов вроде квадратных скобок, поэтому вместо них пусто
-                            //в цифровом ряду дублируются символы с обычной йцукен для фанатов извращений
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, RU_RUBL, RU_DQUO, RU_NUM,  RU_SCLN, RU_PERC,                            RU_COLN, RU_QUES, RU_ASTR, RU_MINS, RU_PLUS, _______,
+     _______, RU_RUBL, CLIPBOARD, PASS,  KC_NO,    KC_F5,                             KC_NO,    LANG,   RU_ASTR, RU_MINS, RU_PLUS, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_EXLM, RU_DQUO, RU_LPRN, RU_RPRN, KC_BSLS,                             RU_PERC,KC_HOME,  KC_UP,  KC_END,  RU_SCLN, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -202,7 +204,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {  //macros examples
     switch (keycode) {
-        case CLIPBOARD:  //windows clipboard (should be enabled in Windows settings)
+        case CLIPBOARD:  //windows clipboard
             if (record->event.pressed) {
                 SEND_STRING(SS_LGUI("v"));
             } 
@@ -233,12 +235,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {  //macros exam
             break;
         case TO_COLEMAK:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_COLEMAK);
+                if (russian) {
+                    russian = false;
+                    SEND_STRING(SS_LALT(SS_LSFT()));
+                    set_single_persistent_default_layer(_COLEMAK);
+                } else {
+                    set_single_persistent_default_layer(_COLEMAK);
+                }
             }
             break;
         case TO_QWERTY:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_QWERTY);
+                if (russian) {
+                    russian = false;
+                    SEND_STRING(SS_LALT(SS_LSFT()));
+                    set_single_persistent_default_layer(_QWERTY);
+                } else {
+                    set_single_persistent_default_layer(_QWERTY);
+                }
             }
             break;
         case PASS:
@@ -257,7 +271,7 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {   /
     }
 
     for (uint8_t i = led_min; i <= led_max; i++) {
-        switch(get_highest_layer(layer_state|default_layer_state)) {           //layers underglow
+        switch(get_highest_layer(layer_state|default_layer_state)) {           //layers backlight
             case _NUM:
                 /*for (int j = 0; j < 15; ++j) {
                     rgb_matrix_set_color(backlightLEDall[j], colourNum[0], colourNum[1], colourNum[2]);
